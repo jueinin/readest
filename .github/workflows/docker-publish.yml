@@ -59,8 +59,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_SUPABASE_URL=https://zfbwsqkeppuvkmszycrs.supabase.co
-            NEXT_PUBLIC_SUPABASE_ANON_K85EY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmYndzcWtlcHB1dmttc3p5Y3JzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzcwMzY0NzYsImV4cCI6MjA1MjYxMjQ3Nn0.sUTbpjE-vO1eTzDn4yqwbatDg2jh9IrsyA87zMsT5wQ
+            NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           debug: true 
