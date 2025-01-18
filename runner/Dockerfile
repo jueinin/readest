@@ -1,8 +1,8 @@
 # 使用 Node.js 作为基础镜像
 FROM node:22-slim
 
-# 安装 pnpm
-RUN npm install -g pnpm
+# 安装 pnpm 和 mkdirp
+RUN npm install -g pnpm mkdirp
 
 # 设置工作目录
 WORKDIR /app
@@ -17,6 +17,9 @@ RUN pnpm install
 
 # 复制源代码
 COPY . .
+
+# 创建必要的目录
+RUN mkdir -p apps/readest-app/public/vendor/pdfjs
 
 # 设置构建参数
 ARG NEXT_PUBLIC_POSTHOG_KEY
