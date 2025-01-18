@@ -7,19 +7,12 @@ RUN npm install -g pnpm mkdirp
 # 设置工作目录
 WORKDIR /app
 
-# 复制 package.json 文件
-COPY package.json pnpm-lock.yaml ./
-COPY apps/readest-app/package.json ./apps/readest-app/
-COPY packages/foliate-js/package.json ./packages/foliate-js/
-
-# 安装依赖
-RUN pnpm install
-
 # 复制源代码
 COPY . .
 
-# 创建必要的目录
-RUN mkdir -p apps/readest-app/public/vendor/pdfjs
+RUN pnpm install && pnpm --filter @readest/readest-app setup-pdfjs
+
+
 
 # 设置构建参数
 ARG NEXT_PUBLIC_POSTHOG_KEY
@@ -36,10 +29,6 @@ ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
 ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
 ENV NEXT_PUBLIC_APP_PLATFORM=web
 
-# 设置 PDF.js
-RUN cd apps/readest-app && pnpm setup-pdfjs
-
-# 构建应用
 RUN cd apps/readest-app && pnpm build-web
 
 # 暴露端口

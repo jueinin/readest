@@ -25,7 +25,7 @@ export const makeSafeFilename = (filename: string, replacement = '_') => {
   return safeName.trim();
 };
 
-export const getUserLang = () => navigator?.language.split('-')[0] || 'en';
+export const getUserLang = () => 'en';
 
 export const getUserLocale = (lang: string): string | undefined => {
   const languages =
