@@ -287,7 +287,7 @@ export const BOOK_IDS_SEPARATOR = '+';
 
 export const DOWNLOAD_READEST_URL = 'https://readest.com?utm_source=readest_web';
 
-export const READEST_WEB_BASE_URL = 'https://web.readest.com';
+export const READEST_WEB_BASE_URL = 'https://sz-readset.liangc.work:11050';
 
 export const SYNC_PROGRESS_INTERVAL_SEC = 60;
 export const SYNC_NOTES_INTERVAL_SEC = 60;
